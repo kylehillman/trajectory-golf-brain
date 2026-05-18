@@ -317,6 +317,10 @@ Major milestones:
 
 ## 6. Open Tasks & Next Priorities
 
+### Blocked / waiting on Kyle
+
+- **Paste Grok Custom Instructions into Grok "Trajectory Golf" project.** The block to paste is in the Claude chat history from 2026-05-17 (look for "Grok Project Custom Instructions — paste this in"). Currently **blocked on Grok login issues** as of 2026-05-17. Once Kyle gets back in, drop the block into the project's Custom Instructions and confirm Grok fetches `https://raw.githubusercontent.com/kylehillman/trajectory-golf-brain/main/HANDOVER.md` at chat start.
+
 ### Immediate this week
 
 1. File **Texas Sales Tax Permit** via Comptroller Webfile (free, ~30 min)
@@ -565,6 +569,11 @@ In priority order:
 ## 11. Session Log (Living Memory)
 
 > Append-only changelog of every meaningful Claude or Grok session. Newest entry on top. Each entry is short: date, AI, what changed, what's next. This is how the two assistants stay in sync between sessions. See `README.md` for the workflow.
+
+### 2026-05-17 · Claude (Opus 4.7) · Logged blocked Grok-instructions task
+
+- Kyle hit Grok login issues before he could paste the Custom Instructions block into his Grok "Trajectory Golf" project. Logged as a blocked task at the top of §6 so it surfaces on the next session of either AI. The block itself lives in the Claude chat history from 2026-05-17 ("Grok Project Custom Instructions — paste this in").
+- **Open for next session:** unblock Grok login → paste Custom Instructions → test that Grok auto-fetches HANDOVER.md at chat start.
 
 ### 2026-05-17 · Claude (Opus 4.7) · Added `bin/grok-sync` round-trip helper
 
