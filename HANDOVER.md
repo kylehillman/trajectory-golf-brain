@@ -566,6 +566,14 @@ In priority order:
 
 > Append-only changelog of every meaningful Claude or Grok session. Newest entry on top. Each entry is short: date, AI, what changed, what's next. This is how the two assistants stay in sync between sessions. See `README.md` for the workflow.
 
+### 2026-05-17 · Claude (Opus 4.7) · Repo flipped public + project instructions added
+
+- Changed visibility of `kylehillman/trajectory-golf-brain` from private to **public** so Grok can fetch `HANDOVER.md` directly via the raw URL. ⚠️ Kyle accepted the tradeoff — EIN, lease walk-away number ($5,500/mo), financial model, and personal-exposure numbers ($300–400K) are now Google-indexable. Sensitive items can be selectively redacted to `[private — ask Kyle]` in a follow-up commit if Kyle changes his mind.
+- Updated `README.md` to reflect the public-fetch workflow.
+- Wrote `/Users/kylehillman/golfsimulator/CLAUDE.md` so Claude Code auto-loads the brain-repo sync workflow at session start.
+- Generated a Grok Project "Custom Instructions" paste-in block (in chat reply, not committed).
+- **Open for next session:** §6 immediate-week items 1–6 — sales tax permit, bank submit, Kirby consult, real-card founder signup test, $1 → $99 deposit bump.
+
 ### 2026-05-17 · Claude (Opus 4.7) · Initialized shared brain repo
 
 - Created private GitHub repo `kylehillman/trajectory-golf-brain` as the canonical living-memory store for Trajectory Golf.

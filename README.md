@@ -2,7 +2,9 @@
 
 The single source of truth for what's going on with **Trajectory Golf LLC**, shared between Kyle, Claude (Anthropic), and Grok (xAI).
 
-**Private repo.** Contains EIN, financial model, Stripe account IDs, Optix plan IDs, and business strategy. Do not make public.
+**Public repo** — chosen for Grok read access. Contains EIN, financial model, account IDs, and business strategy. Avoid committing actual tokens / passwords / API keys; account *identifiers* (Stripe `acct_*`, Optix plan IDs) are fine.
+
+**Raw URL for AI fetch:** `https://raw.githubusercontent.com/kylehillman/trajectory-golf-brain/main/HANDOVER.md`
 
 ---
 
@@ -43,24 +45,15 @@ When the session changes anything material (decision made, task closed, integrat
 
 ### When starting a session with Grok (grok.com, web)
 
-Grok cannot read private GitHub repos directly. Two ways to feed it the current state:
+Grok can fetch the public raw URL directly. The Grok Project's Custom Instructions (see below) tell it to do this automatically. If you ever need to do it manually, paste this into the chat:
 
-**Option A — Grok Project file (recommended):**
+> "Fetch https://raw.githubusercontent.com/kylehillman/trajectory-golf-brain/main/HANDOVER.md and read it before anything else. Then [task]."
 
-1. Pull the latest locally: `cd ~/golfsimulator/trajectory-golf-brain && git pull`
-2. In your Grok "Trajectory Golf" project, **replace** the attached `HANDOVER.md` with the fresh copy.
-3. Start the chat: *"Read the attached HANDOVER.md. Then [task]."*
+Grok cannot push to GitHub directly. End any session that changed material state by asking:
 
-**Option B — Paste in chat:**
+> "Draft the new §11 Session Log entry and any HANDOVER.md edits as a single replacement block I can paste into my local file."
 
-1. `cat ~/golfsimulator/trajectory-golf-brain/HANDOVER.md | pbcopy`
-2. Paste into Grok at the top of the conversation.
-
-When the Grok session changes anything material, Grok cannot push directly. End the session by asking:
-
-> "Draft the Session Log entry and any HANDOVER.md edits as a single diff or replacement block I can paste into my local file."
-
-Copy Grok's output, paste into `HANDOVER.md` locally, then commit + push (Claude or `git` directly):
+Copy Grok's output, paste into `HANDOVER.md` locally, then commit + push (Claude can do this, or run `git` directly):
 
 ```bash
 git add HANDOVER.md
