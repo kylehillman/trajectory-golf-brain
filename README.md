@@ -14,8 +14,9 @@ The single source of truth for what's going on with **Trajectory Golf LLC**, sha
 |---|---|
 | `HANDOVER.md` | The living document. Full project state — overview, tech, decisions, open tasks, code snippets, risks. Both AIs read this first every session. **§11 Session Log** at the bottom is the rolling changelog. |
 | `README.md` | This file. The workflow. |
+| `bin/grok-sync` | Helper script — round-trips Grok's paste-in into a commit. See *Round-tripping Grok* below. |
 
-That's it. One doc, intentionally.
+That's it. One doc + one helper, intentionally.
 
 ---
 
@@ -53,13 +54,32 @@ Grok cannot push to GitHub directly. End any session that changed material state
 
 > "Draft the new §11 Session Log entry and any HANDOVER.md edits as a single replacement block I can paste into my local file."
 
-Copy Grok's output, paste into `HANDOVER.md` locally, then commit + push (Claude can do this, or run `git` directly):
+Copy Grok's output and run `grok-sync` (see below).
+
+### Round-tripping Grok — the `grok-sync` helper
+
+`bin/grok-sync` collapses the post-Grok flow into one command. With Grok's paste-in block on your clipboard:
 
 ```bash
-git add HANDOVER.md
-git commit -m "session: grok <one-line summary>"
-git push
+grok-sync
 ```
+
+What happens:
+
+1. `git pull --rebase` so you start on the latest brain.
+2. Saves your clipboard to `/tmp/grok-paste-<timestamp>.md` as reference.
+3. Opens `HANDOVER.md` and the paste file in your `$EDITOR` (falls back to `code -w` → `nano` → `vi`). Apply Grok's edits in place, save.
+4. Press `ENTER` in the terminal when done.
+5. If `HANDOVER.md` changed: commits with a headline auto-pulled from the new §11 Session Log entry (`session: grok <headline>`), then `git push`. If nothing changed: clean exit, paste file kept for another pass.
+
+One-time install (alias so you can run `grok-sync` from anywhere):
+
+```bash
+echo 'alias grok-sync="/Users/kylehillman/golfsimulator/trajectory-golf-brain/bin/grok-sync"' >> ~/.zshrc
+source ~/.zshrc
+```
+
+Linux note: the script uses `pbpaste` (macOS). Swap for `xclip -o` if you ever run this elsewhere.
 
 ### When you (Kyle) make a unilateral decision outside a session
 

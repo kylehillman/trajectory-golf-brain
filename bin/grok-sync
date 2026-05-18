@@ -1,0 +1,95 @@
+#!/usr/bin/env bash
+# grok-sync — round-trip Grok's HANDOVER edits into git with one command.
+#
+# Usage: copy Grok's paste-in block to clipboard, then run:
+#   grok-sync
+#
+# What it does:
+#   1. cd to the brain repo and `git pull` so you start clean.
+#   2. Save the clipboard to /tmp/grok-paste-<timestamp>.md as a reference.
+#   3. Open HANDOVER.md (and the paste file) for you to integrate the edits.
+#   4. Wait for you to save and press ENTER.
+#   5. If HANDOVER.md changed, commit with a headline pulled from the new
+#      §11 Session Log entry, then push.
+#   6. If nothing changed, abort cleanly.
+#
+# Editor: respects $VISUAL / $EDITOR. Falls back to `code -w` (VS Code),
+# then `nano`, then `vi`.
+
+set -euo pipefail
+
+BRAIN_DIR="/Users/kylehillman/golfsimulator/trajectory-golf-brain"
+HANDOVER="$BRAIN_DIR/HANDOVER.md"
+STAMP="$(date -u +'%Y-%m-%d_%H%M%S')"
+PASTE_FILE="/tmp/grok-paste-${STAMP}.md"
+
+# ── 1. sanity checks ────────────────────────────────────────────────
+if [ ! -d "$BRAIN_DIR/.git" ]; then
+  echo "✗ Brain repo not found at $BRAIN_DIR" >&2
+  exit 1
+fi
+if ! command -v pbpaste >/dev/null; then
+  echo "✗ pbpaste not available (macOS only). Use 'xclip -o' on Linux." >&2
+  exit 1
+fi
+
+cd "$BRAIN_DIR"
+
+# ── 2. pull latest so we're not committing onto a stale base ────────
+echo "→ Pulling latest brain…"
+if ! git pull --rebase --autostash; then
+  echo "✗ git pull failed — fix the conflict, then re-run." >&2
+  exit 1
+fi
+
+# ── 3. capture clipboard ────────────────────────────────────────────
+CLIP="$(pbpaste)"
+if [ -z "${CLIP// }" ]; then
+  echo "✗ Clipboard is empty. Copy Grok's paste-in block first." >&2
+  exit 1
+fi
+printf '%s\n' "$CLIP" > "$PASTE_FILE"
+BYTES=$(wc -c < "$PASTE_FILE" | tr -d ' ')
+echo "→ Saved clipboard ($BYTES bytes) → $PASTE_FILE"
+
+# ── 4. open the editor ──────────────────────────────────────────────
+EDITOR_CMD="${VISUAL:-${EDITOR:-}}"
+if [ -z "$EDITOR_CMD" ]; then
+  if command -v code >/dev/null; then EDITOR_CMD="code --wait"
+  elif command -v nano >/dev/null; then EDITOR_CMD="nano"
+  else                                  EDITOR_CMD="vi"
+  fi
+fi
+echo "→ Opening editor: $EDITOR_CMD HANDOVER.md  $PASTE_FILE"
+echo "  Apply Grok's edits to HANDOVER.md, then SAVE the file."
+# shellcheck disable=SC2086
+$EDITOR_CMD "$HANDOVER" "$PASTE_FILE" || true
+
+# Some editors (code --wait) block here; others (nano/vi opening one buffer)
+# return when you close that one file. Give the user an explicit gate.
+echo
+read -r -p "Press ENTER once HANDOVER.md is saved (or Ctrl-C to abort)… " _
+
+# ── 5. did anything change? ─────────────────────────────────────────
+if git diff --quiet -- HANDOVER.md; then
+  echo "→ HANDOVER.md unchanged. Nothing to commit."
+  echo "  (Paste reference left at $PASTE_FILE in case you want another pass.)"
+  exit 0
+fi
+
+# ── 6. derive a commit headline from the first Grok Session Log entry
+HEADLINE="$(grep -m1 -E '^### [0-9]{4}-[0-9]{2}-[0-9]{2} · [Gg]rok' HANDOVER.md \
+  | sed -E 's/^### [0-9]{4}-[0-9]{2}-[0-9]{2} · [^·]+· //' \
+  | tr -d '\n' | cut -c1-72)"
+if [ -z "$HEADLINE" ]; then
+  HEADLINE="grok session $(date -u +'%Y-%m-%d')"
+fi
+
+echo "→ Staged changes in HANDOVER.md:"
+git --no-pager diff --stat -- HANDOVER.md | sed 's/^/    /'
+
+# ── 7. commit + push ────────────────────────────────────────────────
+git add HANDOVER.md
+git commit -m "session: grok ${HEADLINE}"
+git push
+echo "✓ Pushed: session: grok ${HEADLINE}"

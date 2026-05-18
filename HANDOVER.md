@@ -566,6 +566,12 @@ In priority order:
 
 > Append-only changelog of every meaningful Claude or Grok session. Newest entry on top. Each entry is short: date, AI, what changed, what's next. This is how the two assistants stay in sync between sessions. See `README.md` for the workflow.
 
+### 2026-05-17 · Claude (Opus 4.7) · Added `bin/grok-sync` round-trip helper
+
+- New shell helper at `bin/grok-sync` collapses post-Grok-session work into one command: `git pull --rebase` → save clipboard to `/tmp/grok-paste-*.md` → open `HANDOVER.md` + paste file in `$EDITOR` → on save, commit with auto-derived headline (`session: grok <headline>` from the new §11 entry) → `git push`. Aborts cleanly if `HANDOVER.md` unchanged.
+- README updated with install + usage instructions (`alias grok-sync=…` one-liner for `~/.zshrc`).
+- **Open for next session:** unchanged — §6 immediate-week items 1–6 (sales tax permit, bank submit, Kirby consult, real-card founder signup test, $1 → $99 deposit bump).
+
 ### 2026-05-17 · Claude (Opus 4.7) · Repo flipped public + project instructions added
 
 - Changed visibility of `kylehillman/trajectory-golf-brain` from private to **public** so Grok can fetch `HANDOVER.md` directly via the raw URL. ⚠️ Kyle accepted the tradeoff — EIN, lease walk-away number ($5,500/mo), financial model, and personal-exposure numbers ($300–400K) are now Google-indexable. Sensitive items can be selectively redacted to `[private — ask Kyle]` in a follow-up commit if Kyle changes his mind.
