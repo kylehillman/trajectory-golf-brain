@@ -570,6 +570,14 @@ In priority order:
 
 > Append-only changelog of every meaningful Claude or Grok session. Newest entry on top. Each entry is short: date, AI, what changed, what's next. This is how the two assistants stay in sync between sessions. See `README.md` for the workflow.
 
+### 2026-05-18 · Claude (Opus 4.7, Cowork) · Migrated to Cowork + built local /memory + scheduled email digest
+
+- **Switched primary interface from Claude Code CLI to Cowork** (Anthropic desktop app). Folder mounted at `/Users/kylehillman/golfsimulator/`; brain-pull-first ritual unchanged. Installed Cowork plugins covering engineering, finance, small-business, sales, marketing, product-management, design, productivity, and data.
+- **Built `/Users/kylehillman/golfsimulator/memory/`** — 5 navigation files (`00_index.md`, `repo_map.md`, `code_conventions.md`, `stale_docs.md`, `quick_commands.md`) so future sessions can find files and patterns without re-scanning the whole tree. Complements HANDOVER (doesn't duplicate it). Root `CLAUDE.md` updated to point at it.
+- **Cataloged stale docs** in `memory/stale_docs.md`: `trajectory-golf-web/README.md` + `HANDBACK.md` still describe the dead ConvertKit/Stripe Payment Links flow; `files/legal/README.md` still says "thenineteenthhole.com" / "19th Hole Operations LLC"; `lib/optix.ts` JSDoc references a phantom `memory/project_nineteenth_hole_optix.md`. Drift-watch items: `lib/structured-data.ts` `geo` (Bastrop city center placeholder), `api/cron/recalc-trial-days/route.ts` `OPENING_DATE_ISO`, HANDOVER §2.2 line about $1 founder deposits.
+- **Scheduled task in Cowork** — `trajectory-golf-email-digest` runs at 9am/12pm/3pm/5pm/7pm daily, reads `trajectory.golf.llc@gmail.com`, sends phone-friendly digest prioritized by Optix signups → emails from real people → time-sensitive items. Gmail connector connected but not verified against `trajectory.golf.llc@gmail.com` specifically — first run may pause for auth.
+- **Open for next session:** §6 immediate-week items 1–6 unchanged (sales tax permit, bank submit, Kirby consult, real-card founder signup test, $1 → $99 deposit bump, live-mode Stripe webhook decision). Cleanup-when-touched: fix the stale README/HANDBACK in `trajectory-golf-web/` and the legal/README "19th Hole" references.
+
 ### 2026-05-17 · Claude (Opus 4.7) · Logged blocked Grok-instructions task
 
 - Kyle hit Grok login issues before he could paste the Custom Instructions block into his Grok "Trajectory Golf" project. Logged as a blocked task at the top of §6 so it surfaces on the next session of either AI. The block itself lives in the Claude chat history from 2026-05-17 ("Grok Project Custom Instructions — paste this in").
