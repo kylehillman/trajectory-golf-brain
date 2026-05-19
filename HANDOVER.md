@@ -570,6 +570,14 @@ In priority order:
 
 > Append-only changelog of every meaningful Claude or Grok session. Newest entry on top. Each entry is short: date, AI, what changed, what's next. This is how the two assistants stay in sync between sessions. See `README.md` for the workflow.
 
+### 2026-05-19 · Grok 4.3 · Set up local Grok project + full workflow in golfsimulator/ workspace
+
+- Created `/Users/kylehillman/golfsimulator/GROK.md` (parallel to CLAUDE.md) with brain-pull-first ritual tailored for this full-access CLI tool: read_file/grep/search_replace for edits, run_terminal_command with nvm ritual, direct git push on brain (no grok-sync paste needed), memory/ navigation, and strict adherence to Kyle's short/tables/pause-for-confirmation style.
+- Updated `memory/00_index.md` to document GROK.md and note that both AIs follow the identical HANDOVER-update discipline.
+- Pushed the pending local commit (01ee929 "migrated to cowork + built local /memory") so `kylehillman/trajectory-golf-brain` remote is now current with the Cowork + memory system.
+- Verified git push works cleanly from the agent shell. The project is now fully dual-AI operational: Claude/Cowork and this Grok CLI stay in lockstep via the public brain repo.
+- **Open for next session:** §6 immediate-week items 1–6 (file TX Sales Tax Permit today, submit Mercury/Relay bank app, email Chris Kirby for OA review, real-card founder test through Optix, bump deposits $1 → $99, decide on live Stripe webhook). Also execute handoff §10 item 2: verify live Optix spot counter + API health. Then support broker outreach and founder target list construction.
+
 ### 2026-05-18 · Claude (Opus 4.7, Cowork) · Migrated to Cowork + built local /memory + scheduled email digest
 
 - **Switched primary interface from Claude Code CLI to Cowork** (Anthropic desktop app). Folder mounted at `/Users/kylehillman/golfsimulator/`; brain-pull-first ritual unchanged. Installed Cowork plugins covering engineering, finance, small-business, sales, marketing, product-management, design, productivity, and data.
