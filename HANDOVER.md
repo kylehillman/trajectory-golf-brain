@@ -591,6 +591,13 @@ In priority order:
 
 > Append-only changelog of every meaningful Claude or Grok session. Newest entry on top. Each entry is short: date, AI, what changed, what's next. This is how the two assistants stay in sync between sessions. See `README.md` for the workflow.
 
+### 2026-05-25 · Grok 4.3 · DRY BrandMark extraction on live website (nav + footer)
+
+- Extracted duplicate compact glyph SVG (amber trajectory arc + fairway-green ring + ball) from nav.tsx:41 and footer.tsx:21 (~20 lines dupe) into shared <BrandMark size={n} className={...} /> in components/icons.tsx.
+- Updated imports + usages in both files; refined adjacent comments for accuracy. `npm run build` clean (Next 16.2.6 + TS strict).
+- Continues post-05-19 branding work (reverts had restored the CSS wordmark + glyph system; new minimalist assets still absent from repo).
+- **Open for next session:** Real-card Optix founder test (gates safe presale) or continue website polish (proper X/SVG icon from Icons/, stale web/README + HANDBACK cleanup, or next branding iteration). Permit (§6.1) steps from prior still ready.
+
 ### 2026-05-25 · Claude (Opus 4.7, Cowork) · Hermes Agent live + Grok project provisioned + Mercury/broker status flips
 
 - **Mercury bank application submitted** (in review). HANDOVER §2.3 flipped from "Pre-fill done; not submitted" → "Application submitted; in review."
