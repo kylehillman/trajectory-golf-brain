@@ -621,6 +621,7 @@ Three bugs found and fixed in one session. Founder presale is now operational at
 - Added graphic social buttons (with custom XIcon + InstagramIcon) in the UpdatesSection ("Stay in touch") — much more visible than just footer text links.
 - New icons follow the same stroke style as other brand icons (currentColor, 1.75 weight).
 - Cleaned up previous debug code from visitor counter in same pass.
+- Web changes committed as 7c8468e and pushed. Vercel deploying now.
 - Build clean.
 
 ### 2026-05-26 · Grok 4.3 · Added X (@Trajectory_Golf) and Instagram (@trajectory.golf) links + finalized visitor counter
