@@ -106,7 +106,8 @@ The website never holds member data; Optix does. Server actions are the only thi
 - `payment_method_policy: ALWAYS_REQUIRED`
 - Standard plans hidden (`onboarding_enabled: false`, `promote: false`) until 50-founder cap fills
 - Day Pass temporarily disabled (re-enable at opening)
-- **⚠️ Founder deposits temporarily $1** as a safety-net for the first real-card end-to-end test — bump back to $99 after test passes (tracked as live task)
+- Founder deposits set to **$99** with `initial_invoice_due: PLAN_PURCHASE` so Optix auto-charges the card-on-file immediately at signup (recurring monthly still deferred to trial-end via `start_billing_on: FOLLOWING_BILLING_DATE` + `free_trial_days`). End-to-end $1 test verified clean 2026-05-25 (Invoice #15 paid via Stripe); final $99 sanity test recommended before sending founder conversations the signup link.
+- Founder guest-pass allowance: AccessTemplate `35048` ("Guest Pass") is bound to product `53471` ("Founder Guest Pass", $0) instead of the paid Guest Pass product (`53149`, $25). This prevents the prior bug where signing up auto-charged the paid guest-pass product at enrollment. **Optix API gotcha:** `access_template_id` on an existing Access row is immutable — `planTemplateCommit` accepts the field in input but silently ignores it. To change what an allowance binds to, mutate the template's `rules` via `accessTemplateCommit`, not the plan's accesses array.
 
 ### 2.3 What's NOT yet done
 
@@ -125,7 +126,6 @@ The website never holds member data; Optix does. Server actions are the only thi
 | Kisi hardware purchase | Pending lease |
 | Optix Kisi integration / `member_booking_created` webhook | Optix app manifest currently `{}` |
 | Day Pass plan re-enable | Gated on facility opening |
-| Bump founder deposit $1 → $99 | After first real card test |
 | Apple Developer Org account / white-label Optix app | Phase 2, gated on D-U-N-S (LLC approved 2026-05-13) |
 
 ### 2.5 Hermes Agent — Kyle's personal AI surface (new 2026-05-25)
@@ -340,47 +340,47 @@ Major milestones:
 - ✅ Commercial RE tenant-rep broker **engaged**
 - ✅ Grok web project **provisioned** with Custom Instructions; live HANDOVER fetch confirmed working
 - ✅ Hermes Agent installed + gateway running as launchd service; Grok-4.3 via SuperGrok OAuth confirmed; Discord bot live
+- ✅ **Founder signup flow fixed end-to-end** — guest-pass allowance rebound to $0 product; deposit-timing bug fixed (`initial_invoice_due: PLAN_PURCHASE`); deposits bumped $1 → $99; $1 test signup verified clean ($1 charged on Stripe, Invoice #15 paid in Optix, no spurious guest-pass charge)
 
 ### Immediate this week (re-ranked 2026-05-25)
 
-1. **Test founder signup end-to-end with a real card** through Optix hosted widget — currently $1 deposit safety-net. Blocks every other founder conversation from converting.
-2. After test passes: **bump Optix founder deposits $1 → $99** via `planTemplateCommit`
-3. **Email Chris W. Kirby** at Bastrop Law Group (512-240-9565) to book a 1-hour OA review consult; send draft OA ahead of time. 2–3 week calendar lead time → start now.
-4. File **Texas Sales Tax Permit** via Comptroller Webfile (free, ~30 min)
-5. **TESS trademark search** on "Trajectory Golf" → file Class 41 (~$350 DIY) before signage / merch / lease commitment
-6. Open Stripe **live-mode webhook** endpoint (if reviving the deposit-confirmation tagging path) — current webhook secret is test mode
+1. **Final $99 sanity test** — one real-card signup at the live $99 deposit before sending founder conversations the signup link. Last verification step before presale goes hot.
+2. **Email Chris W. Kirby** at Bastrop Law Group (512-240-9565) to book a 1-hour OA review consult; send draft OA ahead of time. 2–3 week calendar lead time → start now.
+3. File **Texas Sales Tax Permit** via Comptroller Webfile (free, ~30 min)
+4. **TESS trademark search** on "Trajectory Golf" → file Class 41 (~$350 DIY) before signage / merch / lease commitment
+5. Open Stripe **live-mode webhook** endpoint (if reviving the deposit-confirmation tagging path) — current webhook secret is test mode
 
 ### Founding member campaign (M0–M3)
 
-7. Formalize the 100-name Bastrop-golfer target list (Kyle has started ad-hoc conversations — convert to a tracked pipeline: name, source, stage, last touch, next action)
-8. Begin 30 in-person founding-member conversations
-9. Capture 50 founders at $99 refundable deposit
-10. Weekly founder construction updates (auto via Optix lead emails)
-11. Get permission to use 2–3 supporter quotes on the site for social proof
+6. Formalize the 100-name Bastrop-golfer target list (Kyle has started ad-hoc conversations — convert to a tracked pipeline: name, source, stage, last touch, next action)
+7. Begin 30 in-person founding-member conversations
+8. Capture 50 founders at $99 refundable deposit
+9. Weekly founder construction updates (auto via Optix lead emails)
+10. Get permission to use 2–3 supporter quotes on the site for social proof
 
 ### Site / build (M0–M6)
 
-12. **Tour 3–5 candidate spaces with broker** using Site Criteria one-pager; verify **11 ft ceiling height** at hitting position on each (kills more spaces than anything else)
-13. Lease negotiation (DO NOT SIGN before SBLOC is locked — financing gated on SpaceX IPO)
-14. TrackMan iO pre-order at lease signing
-15. Finalize enclosure: Full Swing Pro vs Foresight GCHawk (reference customer calls — 18-week lead from order)
-16. Collect 3 insurance quotes against defined stack (quotes don't bind; gather now)
+11. **Tour 3–5 candidate spaces with broker** using Site Criteria one-pager; verify **11 ft ceiling height** at hitting position on each (kills more spaces than anything else)
+12. Lease negotiation (DO NOT SIGN before SBLOC is locked — financing gated on SpaceX IPO)
+13. TrackMan iO pre-order at lease signing
+14. Finalize enclosure: Full Swing Pro vs Foresight GCHawk (reference customer calls — 18-week lead from order)
+15. Collect 3 insurance quotes against defined stack (quotes don't bind; gather now)
 
 ### Tech (deferred until opening date is firmer)
 
-17. Configure Optix `member_booking_created` / `member_booking_cancelled` webhooks → Kisi door provisioning
-18. Purchase Kisi hardware + readers (7 doors)
-19. Re-enable Day Pass plan 58557 (`onboarding_enabled: true`)
-20. Open standard plans 58554/55/56 once 50-founder cap fills
-21. **Apple Developer Org account application + D-U-N-S** (LLC now formed → unlocks this; ~6–10 week wait, start now to parallel the founder presale)
-22. Update `OPENING_DATE_ISO` in `app/api/cron/recalc-trial-days/route.ts` when lease signed
-23. **Hermes Agent — decide X tweeting path** (Path A: xurl + free X dev portal, 500 posts/mo; Path B: OpenTweet $5.99/mo). Account choice: @KyleHillman1 vs new @TrajectoryGolf handle.
+16. Configure Optix `member_booking_created` / `member_booking_cancelled` webhooks → Kisi door provisioning
+17. Purchase Kisi hardware + readers (7 doors)
+18. Re-enable Day Pass plan 58557 (`onboarding_enabled: true`)
+19. Open standard plans 58554/55/56 once 50-founder cap fills
+20. **Apple Developer Org account application + D-U-N-S** (LLC now formed → unlocks this; ~6–10 week wait, start now to parallel the founder presale)
+21. Update `OPENING_DATE_ISO` in `app/api/cron/recalc-trial-days/route.ts` when lease signed
+22. **Hermes Agent — decide X tweeting path** (Path A: xurl + free X dev portal, 500 posts/mo; Path B: OpenTweet $5.99/mo). Account choice: @KyleHillman1 vs new @TrajectoryGolf handle.
 
 ### Operations (M-3 to opening)
 
-24. **PGA pro candidate scouting** (Austin + Bastrop teaching pros — soft outreach to 5–10 candidates now; hire closer to opening)
-25. Corporate outreach to Bastrop employers (NOT direct SpaceX)
-26. League L1 ready for M+3 post-open; L2 M+6; L3 M+9
+23. **PGA pro candidate scouting** (Austin + Bastrop teaching pros — soft outreach to 5–10 candidates now; hire closer to opening)
+24. Corporate outreach to Bastrop employers (NOT direct SpaceX)
+25. League L1 ready for M+3 post-open; L2 M+6; L3 M+9
 
 ---
 
@@ -590,6 +590,31 @@ In priority order:
 ## 11. Session Log (Living Memory)
 
 > Append-only changelog of every meaningful Claude or Grok session. Newest entry on top. Each entry is short: date, AI, what changed, what's next. This is how the two assistants stay in sync between sessions. See `README.md` for the workflow.
+
+### 2026-05-25 · Claude (Opus 4.7, Cowork) · Founder signup flow fixed end-to-end (guest-pass allowance + deposit timing + $99 bump)
+
+Three bugs found and fixed in one session. Founder presale is now operational at the real $99 deposit.
+
+**1) Guest-pass allowance bug (continued from Grok's 2026-05-26 session).** All three founder plans (58551/52/53) shared `AccessTemplate 35048` ("Guest Pass") for their guest-pass allowance. That template was bound to the paid Guest Pass product (`53149`, $25, formerly $30), so every founder signup auto-charged the paid product at enrollment. Tried Option A first — created a new AccessTemplate (`35196`) and tried to swap each plan's guest-pass `access_template_id` via `planTemplateCommit`. **Mutation returned no errors but the swap silently didn't take.** Confirmed by re-reading the plans: access rows still pointed at 35048. Conclusion: **`access_template_id` is immutable on existing Access rows in Optix's API** — `planTemplateCommit` accepts it in input but ignores it. Pivoted to Option B: edit template 35048's `rules.product_id` from `[53149]` → `[53471]` (the new $0 "Founder Guest Pass" product Grok set up). One `accessTemplateCommit` mutation. Plans inherit automatically because they still reference 35048. Verified by reading `rules.product_id`. Orphan template 35196 deleted as cleanup. New API gotcha captured in §2.2.
+
+**2) Deposit timing bug (NEW DISCOVERY — silently broken since plan creation).** Test signup showed no $30 charge (guest-pass fix worked) but also no $1 deposit charge. Investigated and found: all three founder plans had `initial_invoice_due: FOLLOWING_BILLING_DATE`, which means the deposit invoice is generated on the *next* billing cycle. Combined with `free_trial_days: 221`, the deposit was scheduled for ~Dec 28, 2026 — trial-end. Worse: looking at older CANCELED test signups (215200/202/203) from before the trial was wired in, even those had `initial_invoice_due_timestamp` set ~1 week after signup, not at signup. **The "$99 refundable deposit at enrollment" mechanic has never actually worked.** Fix: flipped `initial_invoice_due` from `FOLLOWING_BILLING_DATE` → `PLAN_PURCHASE` on all 3 plans via single multi-aliased `planTemplateCommit`. Verified by fresh test signup — $1 hit Stripe immediately, Invoice #15 paid in Optix.
+
+**3) Deposit bumped $1 → $99.** Per §6 task, after the end-to-end $1 test verified clean. Single multi-aliased `planTemplateCommit`. All 3 plans now at deposit: 99 with initial_invoice_due: PLAN_PURCHASE.
+
+**§2.2 updated** with new state + the API gotcha. **§2.3 + §6 cleaned** of completed items ($1→$99 bump done; real-card test ✅ at $1). **§6 immediate-this-week re-ranked** — only outstanding founder-flow item is the recommended final $99 sanity test.
+
+**Local memory updated** at `memory/optix_founder_guest_passes.md` with the full resolved state including the API gotcha.
+
+**Scripts left in `trajectory-golf-web/scripts/`** (all idempotent, read-only or atomic; safe to re-run):
+- `optix-discover-allowances{,-2,-3,-4}.sh` — schema introspection (kept for future debugging)
+- `optix-fix-founder-guest-passes.sh` — v1, deprecated (the silently-failing attempt; kept as documentation of the API gotcha)
+- `optix-fix-founder-guest-passes-v2.sh` — Option B, the working fix
+- `optix-diagnose-deposit.sh` + `optix-check-alexis-plan.sh` — deposit-timing diagnosis
+- `optix-fix-deposit-timing.sh` — the initial_invoice_due flip
+- `optix-bump-deposits-to-99.sh` — $1 → $99 bump
+- `optix-delete-orphan-template.sh` — orphan template 35196 cleanup
+
+**Open for next session:** (1) Final $99 sanity test (real card, fresh email) before sending founder conversations the signup link — strongly recommended even though $1 verified clean end-to-end; (2) cancel any IN_TRIAL test signups still hanging around (Alexis's Approach 216265, the Apex test 216256) since their billing timestamps are baked in pre-fix; (3) Kirby email + TX Sales Tax Permit + TESS trademark search per §6 immediate-this-week.
 
 ### 2026-05-26 · Grok 4.3 · Switched visitor counter to cumulative total visitors (Plausible API key)
 
