@@ -616,6 +616,16 @@ Three bugs found and fixed in one session. Founder presale is now operational at
 
 **Open for next session:** (1) Final $99 sanity test (real card, fresh email) before sending founder conversations the signup link — strongly recommended even though $1 verified clean end-to-end; (2) cancel any IN_TRIAL test signups still hanging around (Alexis's Approach 216265, the Apex test 216256) since their billing timestamps are baked in pre-fix; (3) Kirby email + TX Sales Tax Permit + TESS trademark search per §6 immediate-this-week.
 
+### 2026-05-26 · Grok 4.3 · Ended session (social graphics + counter fix)
+
+- Added prominent graphic X and Instagram buttons (with custom icons) in the Updates / "Stay in touch" section.
+- Plausible cumulative visitors counter now fully working in production (fixed `date` parameter issue).
+- All web changes committed and pushed.
+- Brain updated and pushed.
+- Session closed at user's request.
+
+**Open for next session:** Continue with §6 priorities (real-card Optix founder test at $1, bump to $99, Kirby email, TX sales tax permit, etc.). Social links are now live and prominent.
+
 ### 2026-05-26 · Grok 4.3 · Made X and Instagram more prominent with graphics
 
 - Added graphic social buttons (with custom XIcon + InstagramIcon) in the UpdatesSection ("Stay in touch") — much more visible than just footer text links.
