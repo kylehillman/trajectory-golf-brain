@@ -598,9 +598,10 @@ In priority order:
 - Replaced public `current_visitors` endpoint with Plausible Stats `aggregate` API (requires read-only `PLAUSIBLE_API_KEY`).
 - New component shows large amber total + "total visitors since May 2026". Falls back gracefully if no key is set.
 - Updated `.env.local.example`, privacy page, and §2.2 analytics table.
-- Code change committed to web repo (pending deploy). Brain updated.
+- Web changes committed as 3c6bb50 + pushed to kylehillman/trajectory-golf-web (only the counter + docs files).
+- Brain updated.
 
-**Open for next session:** Kyle to create a read-only Plausible API key (Stats scope, trajectory-golf.com only) and add it as `PLAUSIBLE_API_KEY` in Vercel. Then redeploy to make the real total visible.
+**Open for next session:** Kyle to create a read-only Plausible API key (Stats scope, trajectory-golf.com only) and add it as `PLAUSIBLE_API_KEY` in Vercel → redeploy. Counter will then show real cumulative total.
 
 ### 2026-05-26 · Grok 4.3 · Visitor counter upgraded to graphic live readout
 
