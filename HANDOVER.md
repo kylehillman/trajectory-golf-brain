@@ -596,8 +596,8 @@ In priority order:
 - Replaced tiny 0.65rem faint sentence (easy to miss at bottom of #updates) with compact instrument-panel style matching SpotCounter: pulsing amber dot + 0.7rem mono + accent number (tabular-nums) + short label.
 - 0 visitors: "Thousands have visited this site"; >0: "X people viewing right now"
 - mt-6 flex under newsletter form; now visibly graphic while staying passive/low-key. Build clean.
-- visitors-counter.tsx updated locally (web repo commit/push + Vercel deploy needed for prod).
-- **Open for next session:** §6 immediate (real-card founder test at $1, bump to $99 via planTemplateCommit, email Chris Kirby, file TX sales tax permit). Commit the counter polish?
+- Committed 434e6d7 + pushed (only visitors-counter.tsx) to kylehillman/trajectory-golf-web. Vercel auto-deploy in progress.
+- **Open for next session:** §6 immediate (real-card founder test at $1, bump to $99 via planTemplateCommit, email Chris Kirby, file TX sales tax permit).
 
 ### 2026-05-26 · Grok 4.3 · Plausible script + public visitor counter live on trajectory-golf.com
 
