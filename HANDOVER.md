@@ -112,20 +112,37 @@ The website never holds member data; Optix does. Server actions are the only thi
 
 | Area | Status |
 |---|---|
-| Site / lease | Broker outreach not started; no lease signed |
+| Site / lease | Commercial RE broker **engaged** (2026-05-25); touring not yet started; no lease signed |
 | Simulator enclosure decision | Full Swing Pro vs Foresight GCHawk — reference calls outstanding |
 | Insurance | Coverage stack defined; quotes not yet collected |
 | TX Sales Tax Permit | Not yet filed (Comptroller Webfile, free, ~30 min) |
-| Mercury or Relay bank account | Pre-fill done; not submitted |
-| Operating Agreement | Draft exists; needs Chris W. Kirby (Bastrop Law Group) attorney review |
+| Mercury bank account | **Application submitted; in review** as of 2026-05-25 |
+| Operating Agreement | Draft exists; needs Chris W. Kirby (Bastrop Law Group) attorney review — email not yet sent |
 | Insurance quotes | Stack defined ($2M GL + $1M cyber + $2M umbrella + property + WC); not collected |
 | PGA pro recruitment | Planned: ~14 lessons/week, 30% facility share, 1099 |
-| Founder presale outreach | Target list of 100 Bastrop golfers not yet built |
+| Founder presale outreach | Conversations started ad-hoc; formal 100-name target list not yet built |
+| Trademark "Trajectory Golf" | TESS search not yet run; Class 41 filing not started |
 | Kisi hardware purchase | Pending lease |
 | Optix Kisi integration / `member_booking_created` webhook | Optix app manifest currently `{}` |
 | Day Pass plan re-enable | Gated on facility opening |
 | Bump founder deposit $1 → $99 | After first real card test |
-| Apple Developer Org account / white-label Optix app | Phase 2, gated on LLC approval + D-U-N-S |
+| Apple Developer Org account / white-label Optix app | Phase 2, gated on D-U-N-S (LLC approved 2026-05-13) |
+
+### 2.5 Hermes Agent — Kyle's personal AI surface (new 2026-05-25)
+
+Kyle now runs **Hermes Agent (Nous Research, v0.14.0)** locally on his Mac as a launchd background service.
+
+- Install path: `~/.hermes/hermes-agent/` (venv Python 3.11)
+- Service: `ai.hermes.gateway` (launchd plist at `~/Library/LaunchAgents/ai.hermes.gateway.plist`)
+- Provider: **xAI Grok OAuth (SuperGrok subscription)** — no API key, OAuth refresh handled automatically
+- Active model: **grok-4.3** (confirmed via self-identification)
+- Messaging surface: Discord bot **"Trajectory Golf"** in his private "Trajectory Bot" server (`#hermes` channel set as home). `@`-mention or DM works.
+- Allowlist: `GATEWAY_ALLOW_ALL_USERS=true` (private server, sole user)
+- Credentials in `~/.hermes/.env` (never commit): `DISCORD_BOT_TOKEN`, `DISCORD_CHANNEL_ID`, `GATEWAY_ALLOW_ALL_USERS=true`
+- Logs: `~/.hermes/logs/gateway.log` (`tail -f` for live)
+- Deferred: X (Twitter) posting via xurl skill — decision pending on Path A (free X dev portal, 500 posts/mo) vs Path B (OpenTweet $5.99/mo)
+
+**This means Grok is reachable from anywhere Kyle has Discord** (phone, web, desktop) — the Grok-in-Hermes brain and the Grok web project brain are the same model; they coordinate via HANDOVER.md.
 
 ### 2.4 Stripe integration — important clarifying note
 
@@ -317,34 +334,37 @@ Major milestones:
 
 ## 6. Open Tasks & Next Priorities
 
-### Blocked / waiting on Kyle
+### Recently completed (2026-05-25)
 
-- **Paste Grok Custom Instructions into Grok "Trajectory Golf" project.** The block to paste is in the Claude chat history from 2026-05-17 (look for "Grok Project Custom Instructions — paste this in"). Currently **blocked on Grok login issues** as of 2026-05-17. Once Kyle gets back in, drop the block into the project's Custom Instructions and confirm Grok fetches `https://raw.githubusercontent.com/kylehillman/trajectory-golf-brain/main/HANDOVER.md` at chat start.
+- ✅ Mercury bank application **submitted** (in review)
+- ✅ Commercial RE tenant-rep broker **engaged**
+- ✅ Grok web project **provisioned** with Custom Instructions; live HANDOVER fetch confirmed working
+- ✅ Hermes Agent installed + gateway running as launchd service; Grok-4.3 via SuperGrok OAuth confirmed; Discord bot live
 
-### Immediate this week
+### Immediate this week (re-ranked 2026-05-25)
 
-1. File **Texas Sales Tax Permit** via Comptroller Webfile (free, ~30 min)
-2. Submit **Mercury or Relay bank application** (pre-fill done; LLC approval anytime now)
-3. Email **Chris W. Kirby** at Bastrop Law Group (512-240-9565) to book a 1-hour OA review consult; send draft OA ahead of time
-4. **Test founder signup end-to-end with a real card** through Optix hosted widget — currently $1 deposit safety-net
-5. After test passes: **bump Optix founder deposits $1 → $99** via `planTemplateCommit`
+1. **Test founder signup end-to-end with a real card** through Optix hosted widget — currently $1 deposit safety-net. Blocks every other founder conversation from converting.
+2. After test passes: **bump Optix founder deposits $1 → $99** via `planTemplateCommit`
+3. **Email Chris W. Kirby** at Bastrop Law Group (512-240-9565) to book a 1-hour OA review consult; send draft OA ahead of time. 2–3 week calendar lead time → start now.
+4. File **Texas Sales Tax Permit** via Comptroller Webfile (free, ~30 min)
+5. **TESS trademark search** on "Trajectory Golf" → file Class 41 (~$350 DIY) before signage / merch / lease commitment
 6. Open Stripe **live-mode webhook** endpoint (if reviving the deposit-confirmation tagging path) — current webhook secret is test mode
 
 ### Founding member campaign (M0–M3)
 
-7. Build target list of 100 Bastrop golfers for founder outreach
+7. Formalize the 100-name Bastrop-golfer target list (Kyle has started ad-hoc conversations — convert to a tracked pipeline: name, source, stage, last touch, next action)
 8. Begin 30 in-person founding-member conversations
 9. Capture 50 founders at $99 refundable deposit
 10. Weekly founder construction updates (auto via Optix lead emails)
+11. Get permission to use 2–3 supporter quotes on the site for social proof
 
 ### Site / build (M0–M6)
 
-11. Engage tenant-rep broker with Site Criteria one-pager; identify 3–5 candidates in Bastrop city limits / SH-71 corridor
-12. Verify **11 ft ceiling height** before falling for any space
-13. Lease negotiation
+12. **Tour 3–5 candidate spaces with broker** using Site Criteria one-pager; verify **11 ft ceiling height** at hitting position on each (kills more spaces than anything else)
+13. Lease negotiation (DO NOT SIGN before SBLOC is locked — financing gated on SpaceX IPO)
 14. TrackMan iO pre-order at lease signing
-15. Finalize enclosure: Full Swing Pro vs Foresight GCHawk (reference customer calls)
-16. Collect 3 insurance quotes against defined stack
+15. Finalize enclosure: Full Swing Pro vs Foresight GCHawk (reference customer calls — 18-week lead from order)
+16. Collect 3 insurance quotes against defined stack (quotes don't bind; gather now)
 
 ### Tech (deferred until opening date is firmer)
 
@@ -352,14 +372,15 @@ Major milestones:
 18. Purchase Kisi hardware + readers (7 doors)
 19. Re-enable Day Pass plan 58557 (`onboarding_enabled: true`)
 20. Open standard plans 58554/55/56 once 50-founder cap fills
-21. Apple Developer Org transfer (post-LLC + D-U-N-S) → Optix white-label app build (~6–10 week runway from LLC formation)
+21. **Apple Developer Org account application + D-U-N-S** (LLC now formed → unlocks this; ~6–10 week wait, start now to parallel the founder presale)
 22. Update `OPENING_DATE_ISO` in `app/api/cron/recalc-trial-days/route.ts` when lease signed
+23. **Hermes Agent — decide X tweeting path** (Path A: xurl + free X dev portal, 500 posts/mo; Path B: OpenTweet $5.99/mo). Account choice: @KyleHillman1 vs new @TrajectoryGolf handle.
 
 ### Operations (M-3 to opening)
 
-23. PGA pro recruitment (1099 contract template)
-24. Corporate outreach to Bastrop employers (NOT direct SpaceX)
-25. League L1 ready for M+3 post-open; L2 M+6; L3 M+9
+24. **PGA pro candidate scouting** (Austin + Bastrop teaching pros — soft outreach to 5–10 candidates now; hire closer to opening)
+25. Corporate outreach to Bastrop employers (NOT direct SpaceX)
+26. League L1 ready for M+3 post-open; L2 M+6; L3 M+9
 
 ---
 
@@ -569,6 +590,23 @@ In priority order:
 ## 11. Session Log (Living Memory)
 
 > Append-only changelog of every meaningful Claude or Grok session. Newest entry on top. Each entry is short: date, AI, what changed, what's next. This is how the two assistants stay in sync between sessions. See `README.md` for the workflow.
+
+### 2026-05-25 · Claude (Opus 4.7, Cowork) · Hermes Agent live + Grok project provisioned + Mercury/broker status flips
+
+- **Mercury bank application submitted** (in review). HANDOVER §2.3 flipped from "Pre-fill done; not submitted" → "Application submitted; in review."
+- **Commercial RE tenant-rep broker engaged.** §2.3 flipped; site tours not yet started but the engagement closes the longest-lead unblock on facility search. §6 site/build task re-ranked to put tours first.
+- **Stamped Certificate of Formation received** (PDF in `files/legal/Certificate of Formation .pdf`). LLC formally exists as of 2026-05-13 — §3.5 already reflected the filing #; no new edits needed there. EIN already in hand.
+- **Hermes Agent (Nous Research v0.14.0) installed and operational** on Kyle's Mac.
+  - Provider: xAI Grok OAuth (SuperGrok subscription), active model `grok-4.3`, OAuth tokens at `~/.hermes/auth.json` with auto-refresh
+  - Gateway running as launchd service (`ai.hermes.gateway`, plist at `~/Library/LaunchAgents/`) — survives reboot
+  - Discord bot "Trajectory Golf" live in Kyle's private "Trajectory Bot" server, `#hermes` channel set as home, `GATEWAY_ALLOW_ALL_USERS=true` (private server)
+  - Self-identifies as `grok-4.3, built by xAI` — confirms full provider wiring
+  - Logs at `~/.hermes/logs/gateway.log`
+  - New §2.5 section added documenting the full setup
+- **Grok web project provisioned** with comprehensive Custom Instructions block; live HANDOVER fetch from `raw.githubusercontent.com` confirmed working. The old §6 "blocked on Grok login issues" item is now resolved and removed from blockers.
+- **§6 immediate-week re-ranked** to put the real-card Optix test first (it gates every founder conversation from converting safely), Kirby email second (2–3 week calendar lead), then sales tax permit and TESS trademark search.
+- **New deferred items added** to §6: TESS trademark search → Class 41 filing; Apple Dev Org + D-U-N-S application (now unblocked by LLC formation); Hermes X tweeting path decision (Path A xurl vs Path B OpenTweet — pending Kyle's call on @KyleHillman1 vs new @TrajectoryGolf handle).
+- **Open for next session:** (1) Real-card Optix founder signup test → bump $1 → $99; (2) Send Kirby email and book OA review consult; (3) File TX Sales Tax Permit; (4) Run TESS search on "Trajectory Golf" and decide on Class 41 filing; (5) Schedule first broker site tour; (6) Decide on Hermes X tweeting path. Note for next AI: Kyle can now reach Grok from anywhere via Discord DM to the "Trajectory Golf" bot — coordinate accordingly.
 
 ### 2026-05-19 · Grok 4.3 · Pushed branding/positioning updates to live site + prepared X assets
 
