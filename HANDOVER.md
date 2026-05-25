@@ -616,6 +616,13 @@ Three bugs found and fixed in one session. Founder presale is now operational at
 
 **Open for next session:** (1) Final $99 sanity test (real card, fresh email) before sending founder conversations the signup link — strongly recommended even though $1 verified clean end-to-end; (2) cancel any IN_TRIAL test signups still hanging around (Alexis's Approach 216265, the Apex test 216256) since their billing timestamps are baked in pre-fix; (3) Kirby email + TX Sales Tax Permit + TESS trademark search per §6 immediate-this-week.
 
+### 2026-05-26 · Grok 4.3 · Added X (@Trajectory_Golf) and Instagram (@trajectory.golf) links + finalized visitor counter
+
+- Added Instagram link in footer (https://www.instagram.com/trajectory.golf/) next to existing X link.
+- Updated X link to user's preferred handle casing (Trajectory_Golf).
+- Removed temporary debug code from visitors-counter.tsx now that the Plausible total visitors counter is working in production.
+- Build verified clean.
+
 ### 2026-05-26 · Grok 4.3 · Switched visitor counter to cumulative total visitors (Plausible API key)
 
 - User explicitly requested to stop showing live concurrent visitors ("X people viewing right now").
