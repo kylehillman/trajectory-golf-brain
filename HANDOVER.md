@@ -591,6 +591,18 @@ In priority order:
 
 > Append-only changelog of every meaningful Claude or Grok session. Newest entry on top. Each entry is short: date, AI, what changed, what's next. This is how the two assistants stay in sync between sessions. See `README.md` for the workflow.
 
+### 2026-05-26 · Grok 4.3 · Optix founder plan guest pass allowance investigation + $0 product
+
+- During the real-card founder signup safety-net test (deposits temporarily at $1), a $30 "Day Guest Pass" product sale (#374530 / invoice #00007) was auto-created when the user signed up for Apex Founder, even though the plan deposit itself correctly showed $1.
+- Root cause: Guest pass allowances on the founder plans (e.g. 4/month on Apex) were configured to trigger a billable sale of the regular $30 Day Guest Pass product at initial enrollment.
+- User explicitly requires: No guest pass charge at the time of founder deposit/signup.
+- Created a new $0 "Founder Guest Pass" product.
+- User was in the plan template editor (allowance section offers Resource / Product / Check in / All). Decision: Switch founder plan guest pass allowances from the paid product to the actual Guest Pass **resource** (or the new $0 product) so allowances are granted with zero charge.
+- Real-card test partially completed (Apex signup succeeded; $30 was refunded on Stripe). Deposits remain at temporary $1 pending clean resolution.
+- New local memory note: `memory/optix_founder_guest_passes.md`.
+
+**Open for next session (Claude):** Finish updating the three founder plans (58551/52/53) so guest pass allowances no longer generate a paid product sale at signup. Verify no charge appears on a test (or the existing) founder signup. Once clean, bump the three founder plan deposits $1 → $99 via `planTemplateCommit`. Decide on long-term visibility/restrictions for the $0 Founder Guest Pass product.
+
 ### 2026-05-25 · Grok 4.3 · DRY BrandMark extraction on live website (nav + footer)
 
 - Extracted duplicate compact glyph SVG (amber trajectory arc + fairway-green ring + ball) from nav.tsx:41 and footer.tsx:21 (~20 lines dupe) into shared <BrandMark size={n} className={...} /> in components/icons.tsx.
