@@ -62,7 +62,7 @@
 | Sim hardware | TrackMan iO + Full Swing Pro **or** Foresight GCHawk enclosure | Tracking decided; enclosure pending |
 | Power automation | Architecture B (always-on PCs; only projector/lights via Kisi webhook → Home Assistant → smart plugs) | Decided |
 | Mobile app | Vanilla Optix app for Phase 1; white-label Phase 2 (gated on LLC + Apple Org account, +$99/mo) | Phase 1 live |
-| Analytics | PostHog (lazy) + Vercel + Meta Pixel + Google Tag + **Plausible** (cookieless; public /current_visitors API for passive real-time counter) — all no-op w/o env | Code complete (counter live) |
+| Analytics | PostHog (lazy) + Vercel + Meta Pixel + Google Tag + **Plausible** (cookieless; now using private aggregate API + read-only key for total visitors since May 2026) — all no-op w/o env | Code complete (total visitors counter live) |
 | Error monitoring | Sentry browser (lazy) | Code complete, needs DSN |
 | Hosting | Vercel | Live |
 | Domain & email | trajectory-golf.com (Squarespace registrar); `hello@trajectory-golf.com` → Gmail forward | Live |
@@ -590,6 +590,17 @@ In priority order:
 ## 11. Session Log (Living Memory)
 
 > Append-only changelog of every meaningful Claude or Grok session. Newest entry on top. Each entry is short: date, AI, what changed, what's next. This is how the two assistants stay in sync between sessions. See `README.md` for the workflow.
+
+### 2026-05-26 · Grok 4.3 · Switched visitor counter to cumulative total visitors (Plausible API key)
+
+- User explicitly requested to stop showing live concurrent visitors ("X people viewing right now").
+- Goal: show real total unique visitors since we started tracking ("how many people have visited since we started counting").
+- Replaced public `current_visitors` endpoint with Plausible Stats `aggregate` API (requires read-only `PLAUSIBLE_API_KEY`).
+- New component shows large amber total + "total visitors since May 2026". Falls back gracefully if no key is set.
+- Updated `.env.local.example`, privacy page, and §2.2 analytics table.
+- Code change committed to web repo (pending deploy). Brain updated.
+
+**Open for next session:** Kyle to create a read-only Plausible API key (Stats scope, trajectory-golf.com only) and add it as `PLAUSIBLE_API_KEY` in Vercel. Then redeploy to make the real total visible.
 
 ### 2026-05-26 · Grok 4.3 · Visitor counter upgraded to graphic live readout
 
