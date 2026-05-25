@@ -62,7 +62,7 @@
 | Sim hardware | TrackMan iO + Full Swing Pro **or** Foresight GCHawk enclosure | Tracking decided; enclosure pending |
 | Power automation | Architecture B (always-on PCs; only projector/lights via Kisi webhook → Home Assistant → smart plugs) | Decided |
 | Mobile app | Vanilla Optix app for Phase 1; white-label Phase 2 (gated on LLC + Apple Org account, +$99/mo) | Phase 1 live |
-| Analytics | PostHog (lazy-loaded) + Vercel Web Analytics + Meta Pixel + Google Tag — each no-ops without env var | Code complete |
+| Analytics | PostHog (lazy) + Vercel + Meta Pixel + Google Tag + **Plausible** (cookieless; public /current_visitors API for passive real-time counter) — all no-op w/o env | Code complete (counter live) |
 | Error monitoring | Sentry browser (lazy) | Code complete, needs DSN |
 | Hosting | Vercel | Live |
 | Domain & email | trajectory-golf.com (Squarespace registrar); `hello@trajectory-golf.com` → Gmail forward | Live |
@@ -590,6 +590,15 @@ In priority order:
 ## 11. Session Log (Living Memory)
 
 > Append-only changelog of every meaningful Claude or Grok session. Newest entry on top. Each entry is short: date, AI, what changed, what's next. This is how the two assistants stay in sync between sessions. See `README.md` for the workflow.
+
+### 2026-05-26 · Grok 4.3 · Plausible script + public visitor counter live on trajectory-golf.com
+
+- Script: exact `https://plausible.io/js/pa-QorOJS5kQlskmTcdfPiDg.js` + init boilerplate (`window.plausible` + `plausible.init()`) confirmed in live HTML (preload link + tags); local HEAD af53e1d matches origin/main
+- Counter: `VisitorsCounter` (RSC + 60s revalidate from Plausible public API) renders at bottom of #updates "Stay in touch" section (updates-section.tsx:35); currently "Thousands of people have visited this site." (0 concurrent at verification fetch)
+- "X people viewing right now · thousands have visited since we started tracking" when visitors > 0
+- Vercel: non-www → www redirect, x-vercel-cache: MISS on curl; user confirmed Plausible dashboard "verify script installation" success
+- Updated §2.2 analytics table + this §11 entry
+- **Open for next session:** §6 immediate (real-card founder test at $1 safety-net → bump deposits $1→$99 via planTemplateCommit on 58551/52/53; email Chris Kirby for OA review; file TX Sales Tax Permit). Optional: wire Plausible API key for 30-day totals in counter?
 
 ### 2026-05-26 · Grok 4.3 · Optix founder plan guest pass allowance investigation + $0 product
 
