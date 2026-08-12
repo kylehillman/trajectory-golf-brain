@@ -113,11 +113,11 @@ The website never holds member data; Optix does. Server actions are the only thi
 
 | Area | Status |
 |---|---|
-| Site / lease | Commercial RE broker **engaged** (2026-05-25); touring not yet started; no lease signed |
+| Site / lease | Commercial RE broker **active** — Nathan K Smith (Austin Tenant Advisors); Aug 7 tour done; location pricing Excel pending from Nathan; no lease signed |
 | Simulator enclosure decision | Full Swing Pro vs Foresight GCHawk — reference calls outstanding |
 | Insurance | Coverage stack defined; quotes not yet collected |
 | TX Sales Tax Permit | Not yet filed (Comptroller Webfile, free, ~30 min) |
-| Mercury bank account | **Application submitted; in review** as of 2026-05-25 |
+| Mercury bank account | **Live** (IO card shipped 2026-06); LAL vs ~$1MM SpaceX collateral expected imminently (2026-08-12) |
 | Operating Agreement | Draft exists; needs Chris W. Kirby (Bastrop Law Group) attorney review — email not yet sent |
 | Insurance quotes | Stack defined ($2M GL + $1M cyber + $2M umbrella + property + WC); not collected |
 | PGA pro recruitment | Planned: ~14 lessons/week, 30% facility share, 1099 |
@@ -590,6 +590,15 @@ In priority order:
 ## 11. Session Log (Living Memory)
 
 > Append-only changelog of every meaningful Claude or Grok session. Newest entry on top. Each entry is short: date, AI, what changed, what's next. This is how the two assistants stay in sync between sessions. See `README.md` for the workflow.
+
+### 2026-08-12 · Chief of Staff (Grok Bot) · Catch-up from Kyle + email RE/legal/finance audit
+
+- **Financing:** LAL loan against ~$1MM SpaceX collateral in process; expected to fund in the next few days (supersedes older SBLOC-only framing for near-term cash). Mercury account already live.
+- **Legal:** Chris Kirby / Bastrop Law Group ready to engage on OA once funded. $200 consult paid 2026-06-01. Engagement Adobe Sign was canceled (expired link); Lori will resend when ready. Open $5,600 trust-account payment request (2026-06-02) still unread in inbox.
+- **RE:** Nathan K Smith (Austin Tenant Advisors) is active tenant rep. Tour Aug 7 with Alexis. Nathan owes Excel of pricing/terms for locations discussed by phone this week — **not in email yet**. Prior email pricing: 1065 Lovers Ln ($25 retail / $20 flex, NNN ~$0.28/sf/mo); Newcor Texas State Business Park Flex ~$20/sf + OPEX ~$0.27/sf (David Alexander). Budget hard constraint under $25/SF.
+- Cannot ingest grok.com / Claude project chat histories from here — email + HANDOVER + Kyle verbal are the catch-up sources.
+
+**Open for next session:** (1) Chase Nathan for location Excel once Kyle OKs; (2) on LAL funding → fund Kirby trust + restart engagement docs; (3) reconcile model to LAL terms; (4) site shortlist scorecard vs 11ft ceiling / rent walk-away.
 
 ### 2026-08-12 · Chief of Staff (Grok Bot) · Stood up multi-agent operating team
 
