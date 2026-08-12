@@ -621,6 +621,15 @@ In priority order:
 
 > Append-only changelog of every meaningful Claude or Grok session. Newest entry on top. Each entry is short: date, AI, what changed, what's next. This is how the two assistants stay in sync between sessions. See `README.md` for the workflow.
 
+### 2026-08-12 · Chief of Staff (Grok Bot) · Consulting feasibility pack — CONDITIONAL GO
+
+- Delivered consulting feasibility pack: **CONDITIONAL GO** on 2-bay Lovers Lane owner-op path.
+- Underwrite blended membership ARPU **~$265** (Club ~$249–259 / Apex ~$329 / Hour Bank replacing Approach unlimited); **NO-GO** on $169-led stack.
+- Structural: **$249 credited reservation** preferred over $99; gate **25 qualified OR 20@≥$249 / 60d** (walk <10); LOI economics before address announce; hybrid 90-day soft-open; **Optix+Kisi+HA only**; fix live 3-bay site copy before announce.
+- Capital: net CAPEX **~$150.6K**, peak business draw **~$84–95K**; no lease until drawable financing + Kirby member-loan docs.
+
+**Open for next session:** (1) Nathan Excel follow-up drafted not sent; (2) column grid + dual SF quote; (3) Kirby restart; (4) price cards + site copy.
+
 ### 2026-08-12 · Chief of Staff (Grok Bot) · Redacted public sync from Claude Aug 12 handoff
 
 - Added **§0 Current truth** banner: 2-bay / ~1,700 SF, go site **1065 Lovers Lane**, Colony rejected, CAPEX/BE/FCF/presale/LOI path updated.
