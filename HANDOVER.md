@@ -10,6 +10,36 @@
 
 ---
 
+---
+
+## 0. Current truth (2026-08-12) — supersedes older sections where they conflict
+
+> Personal financing line size, rate, and collateral values are **intentionally omitted** from this public doc. Ask Kyle or Chief of Staff privately.
+
+| Item | Current |
+|---|---|
+| Configuration | **2 launch bays, ~1,700 SF** (was 3 / ~2,400–2,500) |
+| Go site | **1065 Lovers Lane, Texas State Business Park, Bastrop** (flex/industrial) |
+| Rejected | The Colony retail (FM 969) — Del Webb free-with-HOA sim + cost + 24/7 friction |
+| Shell / open | Shell **Q4 2026** · target open **Q1 2027** |
+| Landlord | David Alexander, NEWCOR — david@newcorcre.com |
+| Tenant rep | Nathan K. Smith, Austin Tenant Advisors — nathan@austintenantadvisors.com |
+| Base rent | Ask $20/SF · target $18/SF |
+| NNN | **$3.30/SF** ($0.27/SF/mo) confirmed |
+| TI | $25/SF **verbal only** — must be in LOI |
+| Modeled all-in | ~$26.45/SF (~$3,747/mo) — small-suite $/SF premium **unverified** (if $26 base → BE ~35) |
+| Hard CAPEX | **~$145K** (was ~$242K / older ~$291K) |
+| Peak business draw | **~$84K** (was ~$262K) |
+| Breakeven | **~30 members** (~25% fill); headroom ~2.5–3.0× |
+| 10-yr FCF (2-bay) | **~$578K** standalone; ~$1,039K with bay 3 + site 2 |
+| Financing | Morgan Stanley securities-based LOC **approved**; drawable ~**Dec 2026** after employee equity lockup. Details private. Funds: MS → Kyle personal → LLC **member loan** (Kirby) → business. Draw in tranches. |
+| Presale gate | **20 paid $99 deposits within 60 days** of address announce; walk if under 10; founder discount 25 spots / 15% / 12-mo |
+| Sim mix | TrackMan as **flagship** bay; second **value** unit under consideration (not all-TrackMan) |
+| Critical path | Column grid + clear height from David → dual quote 1,700 + 2,400 SF → HVAC quotes → OA + member note (Kirby) → LOI (hard expansion option) → announce → deposits → draw |
+
+**Non-negotiable LOI terms:** hard expansion option on adjacent suite · rent abatement 6 mo (floor 4) from **shell delivery** · TI $25/SF in writing · capped PG with burn-down · CAM capped · renewal caps · assignment rights · explicit 24/7 unmanned use.
+
+
 ## Table of Contents
 
 1. [Project Overview & Goals](#1-project-overview--goals)
@@ -27,18 +57,18 @@
 
 ## 1. Project Overview & Goals
 
-**Trajectory Golf LLC** is a 24/7 unstaffed indoor golf simulator membership club opening Q1 2027 in Bastrop, TX. Three premium "launch bays" running TrackMan iO. Members sign up, pay, book, and unlock the door entirely self-service — no on-site staff ever.
+**Trajectory Golf LLC** is a 24/7 unstaffed indoor golf simulator membership club opening Q1 2027 in Bastrop, TX. Two premium launch bays at entry (~1,700 SF), with hard expansion option for a third. Members sign up, pay, book, and unlock the door entirely self-service — no on-site staff ever.
 
 **Founder:** Kyle is a SpaceX Starship launch engineer in Bastrop. The brand intentionally borrows aerospace language (*Trajectory · Apex · Approach*) without being a theme park. Cofounder is Kyle's wife Alexis Kalletta (kept maiden name — use **Kalletta** on legal/banking).
 
 **Key model decisions (locked):**
 
-- 3 bays, single site (down from earlier 4-bay / 2-location plans)
+- **2 bays** at entry (~1,700 SF), single site; hard expansion option for bay 3; site: 1065 Lovers Lane
 - 3 tier pricing: Approach / Trajectory / Apex
-- 50 founding members, rate-locked-for-life, $99 refundable deposit
+- Founder program: 25 discounted spots (15% lifetime, 12-mo commit); 50 public spots; $99 refundable deposit; presale gate 20/60 days
 - Independent (rejected Back Nine / X-Golf franchise)
 - **No alcohol** → single LLC structure, no TABC, no on-site staff requirement
-- SBLOC financing against SpaceX equity (~6.5% interest-only) — not SBA debt
+- Morgan Stanley securities-based LOC approved (details private); drawable ~Dec 2026 post-lockup; not SBA for site 1
 - Owner-operator: Kyle is GC + software builder + fabricator where licensure permits
 
 **Revenue mix (mature):** ~70% memberships / ~10% walk-in / ~8% corporate / ~7% lessons / ~3% leagues / ~2% F&B.
@@ -590,6 +620,15 @@ In priority order:
 ## 11. Session Log (Living Memory)
 
 > Append-only changelog of every meaningful Claude or Grok session. Newest entry on top. Each entry is short: date, AI, what changed, what's next. This is how the two assistants stay in sync between sessions. See `README.md` for the workflow.
+
+### 2026-08-12 · Chief of Staff (Grok Bot) · Redacted public sync from Claude Aug 12 handoff
+
+- Added **§0 Current truth** banner: 2-bay / ~1,700 SF, go site **1065 Lovers Lane**, Colony rejected, CAPEX/BE/FCF/presale/LOI path updated.
+- **Personal financing numbers redacted** (line size, rate, collateral) — private to Kyle / CoS memory only. Public note: MS SBLOC approved, drawable ~Dec 2026, member-loan fund flow via Kirby.
+- Soft-patched §1 locked-model bullets where they still said 3-bay / old SBLOC framing.
+- Open conflicts still need Kyle call: deposit stack (Optix vs Stripe/ConvertKit) and site hosting (Next/Vercel vs Squarespace) — not resolved in this commit.
+
+**Open for next session:** (1) Column grid + dual SF quote from David; (2) clarify live deposit + hosting stack; (3) OA/member note with Kirby after capital access path clear; (4) Nathan Excel chase if still outstanding.
 
 ### 2026-08-12 · Chief of Staff (Grok Bot) · Catch-up from Kyle + email RE/legal/finance audit
 
